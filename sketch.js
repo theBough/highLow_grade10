@@ -7,6 +7,7 @@ function setup() {
   
   myButton = createButton("guess");
   myButton.position(50,140)
+  myButton.mousePressed(getAnswer)
 }
 
 function draw() {
@@ -18,4 +19,7 @@ function draw() {
     textSize(18);
     text("make a guess",50,100);
   pop();
+}
+function getAnswer(){
+  
 }

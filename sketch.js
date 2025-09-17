@@ -1,6 +1,7 @@
 let myInput, 
     myButton,
-    answer = "nothing yet";
+    answer = "nothing yet",
+    randomNumber;
 
 function setup() {
   createCanvas(300, 300);
@@ -11,6 +12,11 @@ function setup() {
   myButton.position(50, 140);
   myButton.mousePressed(getAnswer);
   
+  randomNumber = Math.random()
+  randomNumber = randomNumber * 100
+  randomNumber  =Math.ceil(randomNumber)
+  console.log(randomNumber)
+
 }
 function draw() {
   background("#1B263B");

@@ -10,10 +10,10 @@ function setup() {
   makeRandomNumber();
   buttonStuff()
   console.log(randomNumber)
-
 }//end setup
 function draw() {
   background("#1B263B");
+  makeRect();
   fill("#E0E1DD");
   textSize(28);
   text("High Low", 50, 50);
@@ -22,7 +22,17 @@ function draw() {
   text("make a guess", 50, 100);
   text(answer,50,200);
   pop();
+  
 }//end draw
+//--------------------------------------------------------------
+function makeRect(){
+  push()
+  
+  fill('#0077b6')//this colour of the rectangle
+  stroke('white')//the colour of the border
+  rect(20,20,width-40,height-40)//x,y,width,height
+  pop()
+}//end makeRect
 function inputStuff(){
    myInput = createInput();
   myInput.position(50, 120);
@@ -37,7 +47,6 @@ function buttonStuff(){
   myButton.position(50, 140);
   myButton.mousePressed(getAnswer);
 }//end buttonStuff
-
 function getAnswer() {
   answer = myInput.value();
   console.log(answer)

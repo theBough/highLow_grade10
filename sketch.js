@@ -30,7 +30,7 @@ function makeRect(){
   
   fill('#0077b6')//this colour of the rectangle
   stroke('white')//the colour of the border
-  rect(20,20,width-40,height-40)//x,y,width,height
+  rect(20,20,width-40,height-40,20)//x,y,width,height
   pop()
 }//end makeRect
 function inputStuff(){

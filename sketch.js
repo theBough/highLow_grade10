@@ -1,3 +1,4 @@
+//Variables
 let myInput, 
     myButton,
     answer = "nothing yet",
@@ -5,19 +6,12 @@ let myInput,
 
 function setup() {
   createCanvas(300, 300);
-  myInput = createInput();
-  myInput.position(50, 120);
-
-  myButton = createButton("guess");
-  myButton.position(50, 140);
-  myButton.mousePressed(getAnswer);
-  
-  randomNumber = Math.random()
-  randomNumber = randomNumber * 100
-  randomNumber  =Math.ceil(randomNumber)
+  inputStuff()
+  makeRandomNumber();
+  buttonStuff()
   console.log(randomNumber)
 
-}
+}//end setup
 function draw() {
   background("#1B263B");
   fill("#E0E1DD");
@@ -28,8 +22,23 @@ function draw() {
   text("make a guess", 50, 100);
   text(answer,50,200);
   pop();
-}
+}//end draw
+function inputStuff(){
+   myInput = createInput();
+  myInput.position(50, 120);
+}//end inputStuff
+function makeRandomNumber(){
+  randomNumber = Math.random()
+  randomNumber = randomNumber * 100
+  randomNumber  =Math.ceil(randomNumber)
+}//end makeRandomNumber
+function buttonStuff(){
+  myButton = createButton("guess");
+  myButton.position(50, 140);
+  myButton.mousePressed(getAnswer);
+}//end buttonStuff
+
 function getAnswer() {
   answer = myInput.value();
   console.log(answer)
-}
+}//end getAnswer

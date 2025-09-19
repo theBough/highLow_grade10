@@ -2,7 +2,8 @@
 let myInput, 
     myButton,
     answer = "nothing yet",
-    randomNumber;
+    randomNumber,
+    feedback = "I will say too high or too low";
 
 function setup() {
   createCanvas(300, 300);
@@ -20,7 +21,7 @@ function draw() {
   push();
   textSize(18);
   text("make a guess", 50, 100);
-  text(answer,50,200);
+  text(feedback,50,200);
   pop();
   
 }//end draw
@@ -46,8 +47,16 @@ function buttonStuff(){
   myButton = createButton("guess");
   myButton.position(50, 140);
   myButton.mousePressed(getAnswer);
+  
 }//end buttonStuff
 function getAnswer() {
   answer = myInput.value();
+  if(answer < randomNumber){
+    feedback = "Too Low"
+  }else if(answer > randomNumber){
+    feedback = "Too high"
+  }else{
+    feedback = "You got it!!!!!!!"
+  }//end if
   console.log(answer)
 }//end getAnswer

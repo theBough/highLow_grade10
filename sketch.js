@@ -69,8 +69,11 @@ function getAnswer() {
   
   if(answer < randomNumber){
     feedback = "Too Low"
+    img = loadImage("wrong-or-wrongly__3_-removebg-preview.png")
+
   }else if(answer > randomNumber){
-    feedback = "Too high"
+    feedback = "Too high";
+     img = loadImage("wrong-or-wrongly__3_-removebg-preview.png")
   }else{
     feedback = "You got it!!!!!!!"
   }//end if

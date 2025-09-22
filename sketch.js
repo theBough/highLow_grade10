@@ -1,62 +1,57 @@
-//Variables
-let myInput, 
-    myButton,
-    answer = "nothing yet",
-    randomNumber,
-    feedback = "I will say too high or too low";
+let myFont, myInput, randomNumber, myButton, feedback;
 
 function setup() {
   createCanvas(300, 300);
-  inputStuff()
-  makeRandomNumber();
-  buttonStuff()
-  console.log(randomNumber)
-}//end setup
+  myFont = loadFont("FascinateInline-Regular.ttf");
+  inputStuff();
+  randomNumber = Math.floor(Math.random() * 100);
+  console.log(randomNumber);
+  buttonStuff();
+  feedback = 'I will give you feedback here'
+} //end setup
 function draw() {
-  background("#1B263B");
-  makeRect();
-  fill("#E0E1DD");
-  textSize(28);
-  text("High Low", 50, 50);
-  push();
+  background("#003049");
+  designStuff()
+  fill("#FDF0D5");
+  textSize(30);
+  textFont(myFont);
+  text("High Low", 100, 50);
   textSize(18);
-  text("make a guess", 50, 100);
-  text(feedback,50,200);
-  pop();
+  text("Guess a Number", 100, 100);
+  text(feedback, 100, 250);
   
-}//end draw
-//--------------------------------------------------------------
-function makeRect(){
-  push()
-  
-  fill('#0077b6')//this colour of the rectangle
-  stroke('white')//the colour of the border
-  rect(20,20,width-40,height-40,20)//x,y,width,height
-  pop()
-}//end makeRect
-function inputStuff(){
-   myInput = createInput();
-  myInput.position(50, 120);
-}//end inputStuff
-function makeRandomNumber(){
-  randomNumber = Math.random()
-  randomNumber = randomNumber * 100
-  randomNumber  =Math.ceil(randomNumber)
-}//end makeRandomNumber
-function buttonStuff(){
-  myButton = createButton("guess");
-  myButton.position(50, 140);
-  myButton.mousePressed(getAnswer);
-  
-}//end buttonStuff
-function getAnswer() {
-  answer = myInput.value();
-  if(answer < randomNumber){
-    feedback = "Too Low"
-  }else if(answer > randomNumber){
-    feedback = "Too high"
-  }else{
-    feedback = "You got it!!!!!!!"
+} //end draw
+//***********************************************
+function getAnswer(){
+  if(isNaN(myInput.value())){//this is checking if
+    // the answer is NOT  a number
+    feedback = 'Please enter a number.'
+    return;//this will exit out of the funtion
   }//end if
-  console.log(answer)
+  if(myInput.value() > randomNumber){
+    feedback = 'Too High'
+  }else if(myInput.value() < randomNumber){
+    feedback = 'Too Low'
+  }else{
+    feedback = 'You Got it!'
+  }//end if
 }//end getAnswer
+function designStuff(){
+  push()
+  fill('#00b4d8')
+  stroke('#CAF0F8')
+  strokeWeight(5)
+  rect(10,10,280,280,10);
+  pop();
+}//end designStuff
+function buttonStuff() {
+  myButton = createButton("Make a Guess");
+  myButton.style("background-color", "green");
+  myButton.style('font-Family', 'FascinateInline-Regular.ttf')
+  myButton.position(100, 180);
+  myButton.mousePressed(getAnswer)
+} //end buttonStuff
+function inputStuff() {
+  myInput = createInput();
+  myInput.position(100, 150);
+} //end inputStuff

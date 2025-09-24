@@ -4,7 +4,8 @@ let myInput,
     answer = "nothing yet",
     randomNumber,
     feedback = "I will say too high or too low",
-    img;
+    img,
+    guesses = 0;
 
 function setup() {
   createCanvas(300, 300);
@@ -14,6 +15,7 @@ function setup() {
   console.log(randomNumber);
   //the green part should be the name of your picture
   img = loadImage("download__1_-removebg-preview.png")
+  guesses = 0;
 }//end setup
 function draw() {
   background("#1B263B");
@@ -27,6 +29,7 @@ function draw() {
   text(feedback,50,200);
   pop();
   pictureStuff();
+  text("Guesses: " + guesses, 50,75)
   
 }//end draw
 //--------------------------------------------------------------
@@ -65,6 +68,8 @@ function getAnswer() {
     feedback = "Please enter Numbers only"
     return;
   }
+  guesses += 1;
+  
   //feedback = answer < randomNumber ? "too Low":"too high";
   
   if(answer < randomNumber){
